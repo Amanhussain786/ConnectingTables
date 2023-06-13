@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -35,5 +36,12 @@ public class UserService {
         userRepository.deleteAll();
         return "Database is Empty Now";
     }
-
+    public void updateUser(int id)
+    {
+        User user = userRepository.findById(id).orElse(null);
+        user.setMobNo("123345667");
+        user.setName("Aman");
+        userRepository.save(user);
+    }
 }
+  //  Employee employee = employeeRepository.findById(employeeId) .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + employeeId));

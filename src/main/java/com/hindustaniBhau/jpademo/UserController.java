@@ -38,5 +38,10 @@ public class UserController {
         userService.deleteAllUser();
         return "Database is Empty Now";
     }
-
+    @PutMapping("/update")
+    public String updateUser(@RequestParam("id") int id)
+    {
+        userService.updateUser(id);
+        return "User is Successfully Updated";
+    }
 }
